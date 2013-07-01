@@ -13,5 +13,52 @@
 		<jsp:include page="/modules/header_small.jsp" />
 	</div>
 
+
+	<div class="pagination">
+		<ul>
+			<li>
+				<%
+					for (char c = 'A'; c <= 'Z'; c++) {
+				%> <!-- Hier alphabetische Liste... -->
+				<a href="/albums/<%=c + ".html"%>"> <%=c%></a> <%
+ 	}
+ %>
+			
+		</ul>
+	</div>
+	<%
+		Result result = (Result) request.getAttribute("result");
+	%>
+	<%
+		List<Track> tracks = result.getEntries();
+	%>
+
+	<table class="table table-striped">
+		<%
+			for (Track track : tracks) {
+		%>
+
+		<tr>
+			<td>
+			<a href="/artists/<%=track.getArtist() + ".html"%>"> <%=track.getArtist() %></a>
+			</td>
+			<td>
+			<a href="/albums/<%=track.getAlbum() + ".html"%>"> <%=track.getAlbum() %></a>
+			</td>
+			<td>
+			<a href=""> <%=track.getTitle() %></a>
+			</td>
+			<td>
+			<a href=""> <%=track.getTrack() %></a>
+			</td>
+		</tr>
+
+		<%
+			}
+		%>
+	</table>
+
+
+
 </body>
 </html>
