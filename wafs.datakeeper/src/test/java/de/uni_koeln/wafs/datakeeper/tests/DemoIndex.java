@@ -71,6 +71,7 @@ public class DemoIndex {
 		return track;
 	}
 	
+	
 	public void commit() throws IOException {
 		writer.commit();
 	}
